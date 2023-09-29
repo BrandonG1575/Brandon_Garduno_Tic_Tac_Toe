@@ -16,9 +16,10 @@ let turn = 'X';
 let win;
 /*----- cached element references -----*/
 const squares = Array.from(document.querySelectorAll('#board div'));
-const messages = document.querySelector('h2');
 /*----- event listeners -----*/
 document.getElementById('board').addEventListener('click',handleTurn);
+document.getElementById('reset-button').addEventListener('click', init);
+const messages = document.querySelector('h2');
 /*----- functions -----*/
 
 function init(){
