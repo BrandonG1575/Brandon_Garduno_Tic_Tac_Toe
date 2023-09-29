@@ -5,6 +5,7 @@ let board;
 let turn = 'X';
 /*----- cached element references -----*/
 const squares = Array.from(document.querySelectorAll('#board div'));
+const messages = document.querySelector('h2');
 /*----- event listeners -----*/
 document.getElementById('board').addEventListener('click',handleTurn);
 /*----- functions -----*/
@@ -18,6 +19,7 @@ function render(){
     board.forEach(function(mark, index){
         squares[index].textContent = mark;
     });
+    messages.textContent = `It's ${turn}'s turn!`;
 };
 
 function handleTurn(event){
@@ -26,6 +28,15 @@ function handleTurn(event){
     }); 
     board[idx] = turn;
     console.log(board);
+};
+
+function handleTurn(){
+    let idx = squares.findIndex(function(square){
+        return square === event.target;
+    });
+    board[idx] = turn;
+    turn = turn == 'X' ? 'O' : 'X';
+    render();
 };
 
 init();
